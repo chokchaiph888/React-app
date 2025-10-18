@@ -1,20 +1,16 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
-function AddForm() {
+export default function UpdateForm() {
+  const { id } = useParams(); 
   const [name, setName] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [type, setType] = useState("");
 
-  function onSubmit(event) {
-    event.preventDefault();
-    console.log("🟢 New product (not yet added):", { name, imageURL, type });
-    alert("This form does not yet add a product (next lab will fix it).");
-  }
-
   return (
     <>
-      <h1>Add Product</h1>
-      <form id="create-form" onSubmit={onSubmit}>
+      <h1>Update Product</h1>
+      <form id="update-form">
         <div className="input-group">
           <label htmlFor="name">Name</label>
           <input
@@ -22,7 +18,7 @@ function AddForm() {
             type="text"
             id="name"
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
@@ -33,7 +29,7 @@ function AddForm() {
             type="text"
             id="imageURL"
             value={imageURL}
-            onChange={(event) => setImageURL(event.target.value)}
+            onChange={(e) => setImageURL(e.target.value)}
           />
         </div>
 
@@ -44,14 +40,16 @@ function AddForm() {
             type="text"
             id="type"
             value={type}
-            onChange={(event) => setType(event.target.value)}
+            onChange={(e) => setType(e.target.value)}
           />
         </div>
 
-        <button type="submit">Add product</button>
+        <button type="button" className="UpdateForm__delete-button">
+          Delete product
+        </button>
+        <button type="submit">Update product</button>
       </form>
+      <p>Now editing product ID: {id}</p>
     </>
   );
 }
-
-export default AddForm;
