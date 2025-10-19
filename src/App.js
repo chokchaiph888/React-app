@@ -1,26 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
 
-import GlobalStyle from "./features/GlobalStyle";
-import Navbar from "./features/Navbar";
-import Container from "./features/Container";
-import Home from "./features/Home";
-import AddForm from "./features/Product/AddForm";
-import UpdateForm from "./features/Product/UpdateForm";
+import Navbar from './features/Navbar';
+import Container from './features/Container';
+import Home from './features/Home';
+import AddForm from './features/Product/AddForm';
+import UpdateForm from './features/Product/UpdateForm';
+import { fetchProducts } from './features/Product/actions';
+import GlobalStyle from './features/GlobalStyle';
 
 function App() {
-  // ✅ ใช้ useState แทน Redux
-  const [products, setProducts] = useState([]);
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
-  // ✅ โหลดสินค้าจาก MockAPI
   useEffect(() => {
     async function getProducts() {
-      const res = await axios.get(
-        "https://68e9fffbf1eeb3f856e5bb1d.mockapi.io/React/products"
-      );
-      setProducts(res.data);
-    }
+        const response = await axios.get(
+          'https://68e9fffbf1eeb3f856e5bb1d.mockapi.io/React/products'
+        );
+        dispatch(fetchProducts(response.data));
+      }
+
     getProducts();
   }, []);
 

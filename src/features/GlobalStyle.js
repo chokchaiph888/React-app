@@ -21,22 +21,30 @@ const GlobalStyle = createGlobalStyle`
 
   form input {
     padding: 0.3rem 0.7rem;
+
     font-size: 1rem;
     line-height: 1.5;
+
     outline: none;
+
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+
     width: 100%;
   }
 
   form button {
     font-size: 1rem;
     line-height: 1.5;
+
     padding: 0.5rem 0.7rem;
+
     cursor: pointer;
     float: right;
+
     color: #ffffff;
     background-color: #28a745;
+
     border-radius: 0.25rem;
     border: none;
   }
@@ -44,6 +52,7 @@ const GlobalStyle = createGlobalStyle`
   .UpdateForm__delete-button {
     background: none;
     color: #ea4f3e;
+
     float: left;
     padding: 0;
   }
@@ -53,4 +62,4 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default GlobalStyle;
+    export default GlobalStyle;
